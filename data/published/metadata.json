@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-02-05T00:15:00.140445Z",
+  "sources": {
+    "income_rent": "US Census ACS 5-Year (2022)",
+    "geography": "TIGER/Line ZCTA"
+  },
+  "metric_definition": "Median gross rent / (median household income / 12)"
+}

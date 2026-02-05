@@ -4,7 +4,7 @@ from pathlib import Path
 OUT = Path("data/raw/geo")
 OUT.mkdir(parents=True, exist_ok=True)
 
-URL = "https://www2.census.gov/geo/tiger/TIGER2022/ZCTA5/tl_2022_us_zcta520.zip"
+URL = "https://www2.census.gov/geo/tiger/TIGER2022/ZCTA520/tl_2022_us_zcta520.zip"
 
 print("Downloading ZCTA shapefile...")
 gdf = gpd.read_file(URL)
