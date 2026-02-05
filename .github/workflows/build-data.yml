@@ -1,0 +1,40 @@
+name: Build Housing Affordability Data
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # weekly Monday 7am UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run ETL pipeline
+        run: |
+          python etl/01_fetch_census.py
+          python etl/02_fetch_geography.py
+          python etl/03_transform.py
+          python etl/04_compute_metrics.py
+          python etl/05_publish.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/published
+          git commit -m "Update published affordability data" || echo "No changes"
+          git push
+
