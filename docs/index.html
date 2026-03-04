@@ -15,6 +15,23 @@
   <h1>Delaware Housing Affordability</h1>
 
   <div id="map"></div>
+  <div class="controls">
+  <label>
+    <input type="radio" name="layer" value="affordability" checked>
+    Affordability
+  </label>
+
+  <label>
+    <input type="radio" name="layer" value="safety">
+    Safety
+  </label>
+
+  <input type="text" id="zipSearch" placeholder="Search ZIP..." />
+  <button onclick="searchZip()">Go</button>
+</div>
+
+<canvas id="trendChart"></canvas>
+
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="app.js"></script>
