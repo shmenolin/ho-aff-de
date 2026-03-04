@@ -5,8 +5,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 Promise.all([
-  fetch("../data/published/latest/metrics.json").then(r => r.json()),
-  fetch("../data/published/latest/zcta.geojson").then(r => r.json())
+  fetch("/ho-aff-de/data/published/latest/metrics.json").then(r => r.json()),
+  fetch("ho-aff-de/data/published/latest/zcta.geojson").then(r => r.json())
 ]).then(([metrics, geojson]) => {
 
   const metricMap = {};
